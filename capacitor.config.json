@@ -1,0 +1,8 @@
+{
+  "appId": "com.kuyumcu.altinvitrini",
+  "appName": "Altin Vitrini",
+  "webDir": "web",
+  "server": {
+    "androidScheme": "https"
+  }
+}

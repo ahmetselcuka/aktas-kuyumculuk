@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7b0b42">
+  <title>Aktaş Kuyumculuk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <main class="phone-shell customer-shell">
+      <section class="screen is-active" aria-label="Müşteri Ekranı">
+        <header class="app-topbar">
+          <span id="clockText">20:45</span>
+          <span class="customer-badge">Aktaş Kuyumculuk Novaland Alışveriş Merkezi</span>
+        </header>
+
+        <section class="logo-card">
+          <img class="brand-logo" src="assets/logo.png" alt="Aktaş Kuyumculuk logosu">
+        </section>
+
+        <section class="status-strip">
+          <div class="status-line">
+            <span>Son güncelleme</span>
+            <strong id="lastUpdated">Bekleniyor</strong>
+          </div>
+          <div class="live-pill">
+            <span class="live-dot"></span>
+            <strong id="connectionBadge">Canlı</strong>
+          </div>
+        </section>
+
+        <section class="table-card">
+          <div class="table-head">
+            <span>Ürün</span>
+            <span>Alış (TL)</span>
+            <span>Satış (TL)</span>
+          </div>
+          <div id="ratesTable" class="table-body" aria-live="polite"></div>
+        </section>
+
+        <section class="info-grid">
+          <article class="info-card">
+            <strong>Canlı Kur</strong>
+            <span>Anlık güncellenir</span>
+          </article>
+          <article class="info-card">
+            <strong id="refreshIn">20 sn</strong>
+            <span>Otomatik yenileme</span>
+          </article>
+        </section>
+
+        <section class="contact-card">
+          <p>Bize Ulaşın</p>
+          <a class="contact-button contact-button-link" href="tel:05011332103">Ara</a>
+          <a
+            class="whatsapp-link"
+            href="https://wa.me/905011332103"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
+          </a>
+        </section>
+
+        <section class="address-card">
+          <p>Adres</p>
+          <strong>Sancak Mahallesi Veysel Karani Caddesi No:6/B01</strong>
+          <span>Novaland Alışveriş Merkezi</span>
+          <a
+            class="map-link"
+            href="https://www.google.com/maps/search/?api=1&query=Sancak+Mahallesi+Veysel+Karani+Caddesi+No+6%2FB01+Novaland+Al%C4%B1%C5%9Fveri%C5%9F+Merkezi"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Haritada Aç
+          </a>
+        </section>
+
+        <footer class="brand-footer">
+          <p>Aktaş Kuyumculuk</p>
+          <span>Güven ve kalitenin adresi</span>
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <template id="rateRowTemplate">
+    <article class="rate-row">
+      <div class="product-cell">
+        <span class="product-icon"></span>
+        <div class="product-copy">
+          <strong class="product-name"></strong>
+          <span class="product-meta"></span>
+        </div>
+      </div>
+      <strong class="buy-price"></strong>
+      <div class="sell-cell">
+        <strong class="sell-price"></strong>
+        <span class="trend-value"></span>
+      </div>
+    </article>
+  </template>
+
+  <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="sync-store.js"></script>
+  <script src="customer.js"></script>
+</body>
+</html>

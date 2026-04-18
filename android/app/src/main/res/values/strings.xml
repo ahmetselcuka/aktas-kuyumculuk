@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Akta&#351; Kuyumculuk Y&#246;netim</string>
+    <string name="title_activity_main">Akta&#351; Kuyumculuk Y&#246;netim</string>
+    <string name="package_name">com.aktas.kuyumculuk.yonetim</string>
+    <string name="custom_url_scheme">com.aktas.kuyumculuk.yonetim</string>
+</resources>

@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aktas Kuyumculuk | Yonetim Paneli</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin-site.css">
+</head>
+<body>
+  <main class="admin-shell">
+    <header class="admin-header">
+      <div>
+        <p class="eyebrow">Aktas Kuyumculuk</p>
+        <h1>Yonetim Web Paneli</h1>
+        <p class="header-text">Alis ve satis karlarini web uzerinden degistir, fiyatlari aninda musteri ekranina gonder.</p>
+      </div>
+      <div class="header-card">
+        <span>Son Guncelleme</span>
+        <strong id="lastUpdated">Bekleniyor</strong>
+        <span id="connectionBadge">Canli</span>
+      </div>
+    </header>
+
+    <section class="summary-grid">
+      <article class="summary-card">
+        <span>Veri Kaynagi</span>
+        <strong id="sourceLabel">Firebase Canli Veri</strong>
+      </article>
+      <article class="summary-card">
+        <span>Otomatik Yenileme</span>
+        <strong id="refreshIn">20 sn</strong>
+      </article>
+      <article class="summary-card">
+        <span>Bulut Durumu</span>
+        <strong id="syncMode">Kontrol ediliyor</strong>
+      </article>
+    </section>
+
+    <section class="panel-grid">
+      <section class="panel-card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Kar Ayarlari</p>
+            <h2>Urun Bazli Ayarlar</h2>
+          </div>
+          <div class="button-row">
+            <button id="manualRefreshButton" class="ghost-button" type="button">Fiyatlari Yenile</button>
+            <button id="saveMarginsButton" class="primary-button" type="button">Kaydet</button>
+          </div>
+        </div>
+        <p id="panelNotice" class="panel-notice" aria-live="polite"></p>
+        <div id="marginGrid" class="margin-grid"></div>
+      </section>
+
+      <section class="panel-card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Canli Liste</p>
+            <h2>Guncel Fiyatlar</h2>
+          </div>
+        </div>
+        <div class="rates-table">
+          <div class="rates-head">
+            <span>Urun</span>
+            <span>Alis</span>
+            <span>Satis</span>
+            <span>Durum</span>
+          </div>
+          <div id="ratesTable" class="rates-body"></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <template id="adminRateRowTemplate">
+    <article class="rate-row">
+      <div>
+        <strong class="rate-name"></strong>
+        <span class="rate-meta"></span>
+      </div>
+      <strong class="rate-buy"></strong>
+      <strong class="rate-sell"></strong>
+      <span class="rate-change"></span>
+    </article>
+  </template>
+
+  <template id="adminMarginTemplate">
+    <article class="margin-card">
+      <div class="margin-head">
+        <strong class="margin-title"></strong>
+        <span class="margin-code"></span>
+      </div>
+      <label class="margin-label">
+        <span>Alis Kari</span>
+        <input class="margin-input margin-buy-input" type="number" inputmode="numeric">
+      </label>
+      <label class="margin-label">
+        <span>Satis Kari</span>
+        <input class="margin-input margin-sell-input" type="number" inputmode="numeric">
+      </label>
+    </article>
+  </template>
+
+  <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="sync-store.js"></script>
+  <script src="admin-site.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+﻿:root {
+  --bg-1: #7b0b42;
+  --bg-2: #6d083a;
+  --bg-3: #56062d;
+  --card: rgba(154, 20, 82, 0.72);
+  --card-line: rgba(255, 206, 220, 0.12);
+  --text: #fff7fb;
+  --muted: rgba(255, 241, 247, 0.78);
+  --gold: #ffc94f;
+  --green: #87ff92;
+  --shadow: 0 24px 60px rgba(39, 2, 18, 0.32);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  color: var(--text);
+  background: #3e0718;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(135deg, transparent 0 46%, rgba(255,255,255,0.02) 46% 47%, transparent 47% 100%),
+    linear-gradient(25deg, transparent 0 62%, rgba(255,255,255,0.015) 62% 63%, transparent 63% 100%);
+  pointer-events: none;
+}
+
+.vitrine-shell {
+  min-height: 100vh;
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 14px 0;
+}
+
+.vitrine-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.vitrine-logo {
+  width: min(100%, 470px);
+  height: auto;
+}
+
+.vitrine-status {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  text-align: right;
+  font-size: 0.82rem;
+}
+
+.rates-card {
+  margin-top: 10px;
+  border-radius: 22px;
+  background: #6b0f2b;
+  border: 1px solid var(--card-line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.rates-head,
+.rate-row {
+  display: grid;
+  grid-template-columns: minmax(260px, 1.55fr) minmax(120px, 0.72fr) minmax(120px, 0.72fr) 14px;
+  gap: 0;
+  align-items: center;
+}
+
+.rates-head {
+  padding: 14px 18px 10px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255,255,255,0.16);
+}
+
+.rates-body {
+  display: grid;
+}
+
+.rate-row {
+  padding: 12px 18px;
+  border-top: 1px solid rgba(255,255,255,0.16);
+}
+
+.rate-product {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  padding-right: 8px;
+}
+
+.rate-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  background: radial-gradient(circle at 30% 30%, #fff1b5, #ffbf38 68%, #b36a00 100%);
+  color: #fffef8;
+  font-size: 0.95rem;
+  font-weight: 800;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+.rate-name,
+.rate-buy,
+.rate-sell {
+  font-size: clamp(1rem, 1.5vw, 1.45rem);
+  font-weight: 800;
+}
+
+.rate-name {
+  display: block;
+  font-size: 1.22rem;
+}
+
+.rate-meta,
+.rate-change {
+  display: block;
+  margin-top: 2px;
+  color: var(--green);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.rate-buy,
+.rate-sell-wrap {
+  text-align: center;
+  padding-left: 0;
+  border-left: 1px solid rgba(255,255,255,0.14);
+}
+
+.rate-buy {
+  padding-right: 6px;
+}
+
+.rate-sell-wrap {
+  padding-left: 6px;
+  padding-right: 4px;
+}
+
+.rate-arrow {
+  text-align: right;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.72);
+  border-left: 1px solid rgba(255,255,255,0.14);
+  padding-left: 4px;
+}
+
+.rates-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 18px 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 900px) {
+  .vitrine-shell {
+    width: min(100% - 20px, 100%);
+  }
+
+  .vitrine-header {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .rates-head,
+  .rate-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .rates-head {
+    display: none;
+  }
+
+  .rate-buy,
+  .rate-sell-wrap,
+  .rate-arrow {
+    text-align: left;
+  }
+
+  .rate-arrow {
+    display: none;
+  }
+
+  .rates-footer {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Aktaş Kuyumculuk",
+  "short_name": "Aktaş",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#7b0b42",
+  "theme_color": "#7b0b42",
+  "lang": "tr-TR",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

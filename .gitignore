@@ -1,0 +1,13 @@
+node_modules/
+.idea/
+dist/
+site-dist/
+web/
+android-template-temp/
+npm-debug.log*
+
+android/.gradle/
+android/.idea/
+android/build/
+android/app/build/
+android/local.properties

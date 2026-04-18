@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aktaş Kuyumculuk | Vitrin Ekranı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <main class="vitrine-shell">
+    <header class="vitrine-header">
+      <img class="vitrine-logo" src="assets/logo-transparent.png" alt="Aktaş Kuyumculuk logosu">
+      <div class="vitrine-status">
+        <span>Son Güncelleme: <strong id="lastUpdated">Bekleniyor</strong></span>
+        <span id="connectionBadge">Canlı</span>
+      </div>
+    </header>
+
+    <section class="rates-card">
+      <div class="rates-head">
+        <span>Ürün</span>
+        <span>Alış (TL)</span>
+        <span>Satış (TL)</span>
+        <span></span>
+      </div>
+      <div id="siteRatesTable" class="rates-body"></div>
+      <footer class="rates-footer">
+        <span>Fiyatlar anlık olarak güncellenmektedir.</span>
+        <span id="refreshIn">20 sn</span>
+      </footer>
+    </section>
+  </main>
+
+  <template id="siteRateRowTemplate">
+    <article class="rate-row">
+      <div class="rate-product">
+        <span class="rate-icon"></span>
+        <div>
+          <strong class="rate-name"></strong>
+          <span class="rate-meta">Yükseliyor</span>
+        </div>
+      </div>
+      <strong class="rate-buy"></strong>
+      <div class="rate-sell-wrap">
+        <strong class="rate-sell"></strong>
+        <span class="rate-change"></span>
+      </div>
+      <span class="rate-arrow">›</span>
+    </article>
+  </template>
+
+  <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="sync-store.js"></script>
+  <script src="site.js"></script>
+</body>
+</html>

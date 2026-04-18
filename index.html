@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7b0b42">
+  <title>Aktaş Kuyumculuk Yönetim</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <main class="phone-shell">
+      <section id="homeScreen" class="screen is-active" aria-label="Anasayfa">
+        <header class="app-topbar">
+          <span id="clockText">20:45</span>
+          <button id="refreshButton" class="icon-button" type="button" aria-label="Yenile">Yenile</button>
+        </header>
+
+        <section class="logo-card">
+          <img class="brand-logo" src="assets/logo.png" alt="Aktaş Kuyumculuk logosu">
+        </section>
+
+        <section class="status-strip">
+          <div class="status-line">
+            <span>Son güncelleme</span>
+            <strong id="lastUpdated">Bekleniyor</strong>
+          </div>
+          <div class="live-pill">
+            <span class="live-dot"></span>
+            <strong id="connectionBadge">Canlı</strong>
+          </div>
+        </section>
+
+        <section class="table-card">
+          <div class="table-head">
+            <span>Ürün</span>
+            <span>Alış (TL)</span>
+            <span>Satış (TL)</span>
+          </div>
+          <div id="ratesTable" class="table-body" aria-live="polite"></div>
+        </section>
+
+        <section class="info-grid">
+          <article class="info-card">
+            <strong>Güvenilir</strong>
+            <span>Güncel fiyat akışı</span>
+          </article>
+          <article class="info-card">
+            <strong id="refreshIn">20 sn</strong>
+            <span>Otomatik yenileme</span>
+          </article>
+          <article class="info-card">
+            <strong id="sourceLabel">GenelPara API</strong>
+            <span>Veri kaynağı</span>
+          </article>
+        </section>
+
+        <footer class="brand-footer">
+          <p>Aktaş Kuyumculuk</p>
+          <span>Güven ve kalitenin adresi</span>
+      </footer>
+      </section>
+
+      <section id="panelScreen" class="screen" aria-label="Yönetim Paneli">
+        <header class="panel-topbar">
+          <button class="back-button" type="button" data-screen="home">Geri</button>
+          <div>
+            <p class="panel-kicker">Yönetim</p>
+            <h1>Panel</h1>
+          </div>
+          <span class="topbar-end">Ayar</span>
+        </header>
+
+        <div class="panel-tabs">
+          <button class="tab-chip is-active" type="button">Kâr Ayarları</button>
+          <button class="tab-chip" type="button">Fiyatlar</button>
+          <button class="tab-chip" type="button">Bildirimler</button>
+          <button class="tab-chip" type="button">Ayarlar</button>
+        </div>
+
+        <section class="panel-card">
+          <div class="card-heading">
+            <h2>Kâr Ekleme (TL)</h2>
+            <p>Kaynak fiyata eklenecek alış ve satış kâr tutarları.</p>
+          </div>
+          <div id="marginList" class="margin-list"></div>
+          <button id="saveMarginsButton" class="primary-button" type="button">Kaydet</button>
+          <button id="manualRefreshButton" class="secondary-button" type="button">Fiyatları manuel güncelle</button>
+          <p id="panelNotice" class="panel-notice" aria-live="polite"></p>
+        </section>
+
+        <section class="panel-card">
+          <div class="card-heading">
+            <h2>Sistem Bilgileri</h2>
+          </div>
+          <dl class="system-list">
+            <div><dt>Veri Kaynağı</dt><dd id="panelSource">GenelPara API</dd></div>
+            <div><dt>Son Veri Çekim</dt><dd id="panelFetch">Bekleniyor</dd></div>
+            <div><dt>Son Güncelleme</dt><dd id="panelUpdate">Bekleniyor</dd></div>
+            <div><dt>Otomatik Yenileme</dt><dd id="panelAuto">Aktif</dd></div>
+          </dl>
+        </section>
+      </section>
+
+      <nav class="bottom-nav" aria-label="Alt menü">
+        <button class="nav-item is-active" type="button" data-screen="home">Anasayfa</button>
+        <button class="nav-item" type="button" data-screen="panel">Panel</button>
+        <button class="nav-item" type="button" data-screen="home">Bildirimler</button>
+        <button class="nav-item" type="button" data-screen="panel">Ayarlar</button>
+      </nav>
+    </main>
+  </div>
+
+  <template id="rateRowTemplate">
+    <article class="rate-row">
+      <div class="product-cell">
+        <span class="product-icon"></span>
+        <div class="product-copy">
+          <strong class="product-name"></strong>
+          <span class="product-meta"></span>
+        </div>
+      </div>
+      <strong class="buy-price"></strong>
+      <div class="sell-cell">
+        <strong class="sell-price"></strong>
+        <span class="trend-value"></span>
+      </div>
+    </article>
+  </template>
+
+  <template id="marginItemTemplate">
+    <div class="margin-item">
+      <div class="margin-label-wrap">
+        <span class="margin-icon"></span>
+        <label class="margin-label"></label>
+      </div>
+      <div class="margin-inputs">
+        <div class="margin-input-wrap">
+          <span>Alış</span>
+          <input class="margin-input margin-buy-input" type="number" inputmode="numeric">
+          <span>TL</span>
+        </div>
+        <div class="margin-input-wrap">
+          <span>Satış</span>
+          <input class="margin-input margin-sell-input" type="number" inputmode="numeric">
+          <span>TL</span>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-database-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="sync-store.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
