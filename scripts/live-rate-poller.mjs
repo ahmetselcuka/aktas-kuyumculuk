@@ -140,7 +140,12 @@ async function readExistingFirebasePayload() {
 }
 
 function buildReferenceMetrics(referencePayload) {
-  const indexed = indexRates(referencePayload?.rates?.length ? referencePayload.rates : PRODUCTS.map((item) => ({
+  const canUseReference =
+    referencePayload?.source === PRIMARY_SOURCE_NAME &&
+    Array.isArray(referencePayload?.rates) &&
+    referencePayload.rates.length > 0;
+
+  const indexed = indexRates(canUseReference ? referencePayload.rates : PRODUCTS.map((item) => ({
     key: item.key,
     ...DEFAULT_REFERENCE_RATES[item.key],
     trend: "flat",
